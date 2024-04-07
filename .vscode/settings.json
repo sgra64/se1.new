@@ -13,6 +13,6 @@
     // Java Code Runner (extension) properties
     "code-runner.defaultLanguage": "java",
     "code-runner.executorMap": {
-        "java": "java -cp bin Numbers vier 7 Achtzehn",
+        "java": "java -cp bin Numbers 3 8 12 sieben sechs",
     },
 }
