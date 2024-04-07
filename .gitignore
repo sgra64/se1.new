@@ -59,10 +59,11 @@ docs/
 project.xcworkspace/
 xcuserdata/
 
-# ignore tmp directories and *.tmp files
+# ignore tmp directories and *.tmp files, sub-branches
 **/tmp
 **/temp
 *.tmp
+**/branches
 
 # ignore images and markup directories
 **/img
@@ -70,3 +71,4 @@ xcuserdata/
 
 # ignore OSX system files
 .DS_Store
+
