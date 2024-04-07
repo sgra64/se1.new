@@ -1,11 +1,15 @@
+<!-- check-out single branch from repo:
+        git clone -b a123 --single-branch https://github.com/sgra64/se1.play.git
+ -->
+
 # Aufgaben A1, A2 und A3
 
 
-1. [Aufgabe A1](#a1-setup-java-ide-terminal) - Setup Java (IDE, Terminal)
+1. [Aufgabe A1](#a1-setup-java-ide-terminal) - Setup Java (IDE, Terminal) -- (4 Pts)
 
-1. [Aufgabe A2](#a2-projekt-anlegen-und-helloworld-java) - Projekt anlegen und *HelloWorld.java*
+1. [Aufgabe A2](#a2-projekt-anlegen-und-helloworld-java) - Projekt anlegen und *HelloWorld.java* (2 Pts)
 
-1. [Aufgabe A3](#a3-numbers) - *Numbers*
+1. [Aufgabe A3](#a3-numbers) - *Numbers* (4 Pts)
 
 
 &nbsp;
@@ -63,7 +67,7 @@ Sie sollten JDK Java-21 (LTS - Long-term support Version) auf Ihrem System haben
 
 &nbsp;
 
-## A2: Projekt anlegen und *HelloWorld.java*
+## A2: Projekt anlegen und *HelloWorld-java*
 
 Legen Sie in Ihrem $HOME-Verzeichnis ein Verzeichnis `workspaces` an und
 in diesem ein Projekt `se1.play`.
@@ -149,15 +153,15 @@ java Numbers 799 237 936 vier 1342 neun 1635 4676 1613 3851 \
      1756 3691   23 1995 1800  -15 2784 4305   36 2532 \
      4292 4802 2522 4183 3261 2610  803 2656  498 1668 \
      2038 2194  440 -463 4047 4235 3931  756  521 4042 \
-     3302  485 1002 -408 4691 3387 achtzehn  2241 4382 \
-     1220 3656 -500 zwanzig null null null
+     3302  485 1002 -408 4691 3387 achtzehn -2241 4382 \
+     1220 3656 -500 zwanzig null null null zwoelf neun
 ```
 
 Ergebnis:
 
 ```
 Hello, Numbers (sum args)
---> sum is: 125853
+--> sum is: 121392
 ```
 
 
