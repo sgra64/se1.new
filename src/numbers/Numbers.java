@@ -28,7 +28,7 @@ public interface Numbers {
      * @param numbers input
      * @return sum of positive even numbers[]
      */
-    int sum_pen(int[] numbers);
+    int sum_positive_even_numbers(int[] numbers);
 
 
     /**
@@ -39,7 +39,7 @@ public interface Numbers {
      * @param i start index, calculate sum from index i in numbers[]
      * @return sum of numbers[]
      */
-    int sum_rec(int[] numbers, int i);
+    int sum_recursive(int[] numbers, int i);
 
 
     /**
@@ -93,9 +93,9 @@ public interface Numbers {
      * 
      * @param numbers input
      * @param sum to find
-     * @return Collection of all Pairs (a, b) that add to sum
+     * @return Set of all Pairs (a, b) that add to sum
      */
-    Collection<Pair> findSums(int[] numbers, int sum);
+    Set<Pair> findSums(int[] numbers, int sum);
 
 
     /**

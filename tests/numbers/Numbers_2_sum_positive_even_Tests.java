@@ -31,24 +31,24 @@ public class Numbers_2_sum_positive_even_Tests {
     @Test
     @Order(200)
     void test200_sum_positive_even_numbers_regular() {
-        assertEquals(12, testObj.sum_pen(NumbersImpl.numbers));
+        assertEquals(12, testObj.sum_positive_even_numbers(NumbersImpl.numbers));
     }
 
     @Test
     @Order(201)
     void test201_sum_positive_even_numbers_regular() {
-        assertEquals(38, testObj.sum_pen(NumbersImpl.numb_1));
+        assertEquals(38, testObj.sum_positive_even_numbers(NumbersImpl.numb_1));
     }
 
     @Test
     @Order(202)
     void test202_sum_positive_even_numbers_regular() {
-        assertEquals(6492, testObj.sum_pen(NumbersImpl.numb_2));
+        assertEquals(6492, testObj.sum_positive_even_numbers(NumbersImpl.numb_2));
     }
 
     @Test
     @Order(203)
     void test203_sum_positive_even_numbers_regular() {
-        assertEquals(80012, testObj.sum_pen(NumbersImpl.numb_3));
+        assertEquals(80012, testObj.sum_positive_even_numbers(NumbersImpl.numb_3));
     }
 }

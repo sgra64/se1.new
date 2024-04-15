@@ -1,6 +1,7 @@
 package numbers;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -17,17 +18,17 @@ public class NumbersImpl implements Numbers, Runnable {
     private final String[] args;
 
     /*
-     * Numbers with negative numbers and duplicates (n=0).
+     * Numbers with negative numbers and duplicates.
      */
     static final int[] numbers = {-2, 4, 9, 4, -3, 4, 9, 5};
 
     /*
-     * Numbers with no negative numbers and no duplicates (n=1).
+     * Numbers with no negative numbers and no duplicates.
      */
     static final int[] numb_1 = {8, 10, 7, 2, 14, 5, 4};
 
     /*
-     * Larger set of 24 numbers, no negatives, no duplicates (n=2).
+     * Larger set of 24 numbers, no negatives, no duplicates.
      */
     static final int[] numb_2 = {   // 24 numbers
         371,  682,  446,  754,  205,  972,  600,  163,  541,  672,
@@ -36,7 +37,7 @@ public class NumbersImpl implements Numbers, Runnable {
     }; // add more numbers to find more solutions
 
     /*
-     * Even larger set of 63 numbers, no negatives, no duplicates (n=3).
+     * Even larger set of 63 numbers, no negatives, no duplicates.
      */
     static final int numb_3[] = {
         799, 2377,  936, 3498, 1342,  493, 1635, 4676, 1613, 3851,
@@ -82,7 +83,7 @@ public class NumbersImpl implements Numbers, Runnable {
      * @return sum of positive even numbers[]
      */
     @Override
-    public int sum_pen(int[] numbers) {
+    public int sum_positive_even_numbers(int[] numbers) {
         int result = 0;
 
         /*
@@ -101,7 +102,7 @@ public class NumbersImpl implements Numbers, Runnable {
      * @return sum of numbers[]
      */
     @Override
-    public int sum_rec(int[] numbers, int i) {
+    public int sum_recursive(int[] numbers, int i) {
         int result = 0;
 
         /*
@@ -175,11 +176,11 @@ public class NumbersImpl implements Numbers, Runnable {
      * 
      * @param numbers input
      * @param sum to find
-     * @return Collection of all Pairs (a, b) that add to sum
+     * @return Set of all Pairs (a, b) that add to sum
      */
     @Override
-    public Collection<Pair> findSums(int[] numbers, int sum) {
-        Collection<Pair> result = new HashSet<>();
+    public Set<Pair> findSums(int[] numbers, int sum) {
+    	Set<Pair> result = new HashSet<>();
 
         /*
          * TODO: write code to implement the method
@@ -244,7 +245,8 @@ public class NumbersImpl implements Numbers, Runnable {
             String print(String n, String v) { return v.length()==0? "" : String.format(", %s=%s", n, v); }
             public String toString() {
                 var num = Arrays.toString(getNumbers());
-                return String.format("%s('%s': %s)%s%s%s", op, n, num, print("x", x), print("y", y), print("sum", sum));
+                num = num.length() < 36? String.format("'%s': %s", n, num) : String.format("'%s'", n);
+                return String.format("%s(%s)%s%s%s", op, num, print("x", x), print("y", y), print("sum", sum));
             }
         };
 
@@ -283,52 +285,99 @@ public class NumbersImpl implements Numbers, Runnable {
                 //
                 case "sum":                 // calculate result
                     var res = sum(numbers);
-                    result = String.format("sum()=%d", res);
+                    result = String.format("sum() = %d", res);
                     break;
                 //
                 case "sum_pen":
-                    res = sum_pen(numbers);
-                    result = String.format("sum_pen()=%d", res);
+                    res = sum_positive_even_numbers(numbers);
+                    result = String.format("sum_pen() = %d", res);
                     break;
                 //
                 case "sum_rec":
-                    res = sum_rec(numbers, 0);
-                    result = String.format("sum_rec()=%d", res);
+                    res = sum_recursive(numbers, 0);
+                    result = String.format("sum_rec() = %d", res);
                     break;
                 //
                 case "findFirst":
                     int x = cmd2.toInt("x", cmd2.x);
                     res = findFirst(numbers, x);
-                    result = String.format("findFirst(x=%d)=%d", x, res);
+                    result = String.format("findFirst(x=%d) = %d", x, res);
                     break;
                 //
                 case "findLast":
                     x = cmd2.toInt("x", cmd2.x);
                     res = findLast(numbers, x);
-                    result = String.format("findLast(x=%d)=%d", x, res);
+                    result = String.format("findLast(x=%d) = %d", x, res);
                     break;
                 //
                 case "findAll":
                     x = cmd2.toInt("x", cmd2.x);
                     var resList = findAll(numbers, x);
-                    result = String.format("findAll(x=%d)=%s", x, resList);
+                    result = String.format("findAll(x=%d) = %s", x, resList);
                     break;
                 //
                 case "findSums":
                     var sum = cmd2.toInt("sum", cmd2.sum);
                     var resPairs = findSums(numbers, sum);
-                    result = String.format("findSums(sum=%d)=%s, %d solutions", sum, resPairs, resPairs.size());
+//                    result = String.format("%s, solutions: %d", resPairs, resPairs.size());
+                    result = prettyPrintPairs(resPairs);
                     break;
                     //
                 case "findAllSums":
                     sum = cmd2.toInt("sum", cmd2.sum);
                     var resAny = findAllSums(numbers, sum);
-                    result = String.format("findAllSums(sum=%d)=%s, %d solutions", sum, resAny, resAny.size());
+//                    result = String.format("findAllSums() = %s", prettyPrint(resAny), resAny.size());
+                    result = prettyPrint(resAny);
                     break;
                 }
                 return Optional.ofNullable(result);
             })
             .map(opt -> String.format(" - result: %s\n", opt.isPresent()? opt.get() : "none"))
             .forEach(System.out::println);  // print result
+    }
+
+
+    /**
+     * Pretty-print variable length {@code Set<Pair>} numbers.
+     * @param pairs to print
+     * @return pretty-printed pairs
+     */
+    private String prettyPrintPairs(Set<Pair> pairs) {
+    	StringBuffer sb = new StringBuffer("[");
+    	String numStr = pairs != null? pairs.toString() : "";
+        boolean large = numStr.length() > 40;
+        int j=0;
+        for(Pair p : pairs) {
+        	sb.append(sb.length() > 1? ", " : "");
+        	if(large && j % 5 == 0) {
+        		sb.append("\n    - ");
+        	}
+        	sb.append(p.toString());
+        	j++;
+        }
+        sb.append(large? "\n   ], " : "], ");
+        sb.append(String.format("solutions: %d", j));
+        return sb.toString();
+    }
+    
+    /**
+     * Pretty-print variable length, nested {@code Set<Set<Integer>>} numbers.
+     * @param nested set to print
+     * @return pretty-printed nested sets
+     */
+    private String prettyPrint(Set<Set<Integer>> numbers) {
+    	StringBuffer sb = new StringBuffer("[");
+    	String numStr = numbers != null? numbers.toString() : "";
+        boolean large = numStr.length() > 40;
+        var solutions = numbers.stream()
+            .sorted((a, b) -> Integer.compare(a.size(), b.size()))
+            .map(sol -> {
+                sb.append(sb.length() > 1? ", " : "");
+                sb.append(large? "\n    - " : "").append(sol.toString());
+                return sol;
+            }).collect(Collectors.toList());
+        sb.append(large? "\n   ], " : "], ");
+        sb.append(String.format("solutions: %d", solutions.size()));
+        return sb.toString();
     }
 }
