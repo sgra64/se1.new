@@ -202,11 +202,11 @@ Hello, Numbers (sum args)
 Zeigen Sie das Verhalten an anderen Beispielen.
 
 ```
-java Numbers sum= n="4, sieben, 18, null, vier, dreifach, zwoelf"
+java Numbers sum=48 n="4, sieben, 18, 3, null, vier, zwoelf"
 ```
 
 ```
 Hello, Numbers (sum args)
---> Ihre Lösung (sum=28) war leider falsch
---> sum is: 29
+--> Ihre Lösung war korrekt
+--> sum is: 48
 ```
