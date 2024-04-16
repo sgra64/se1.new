@@ -5,9 +5,7 @@
 # Assignment B2
 
 Assignment B2 defines methods for calculations over arrays with numbers in
-interface
-[Numbers.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/Numbers.java),
-[Numbers.java](src/numbers/Numbers.java):
+interface [Numbers.java](src/numbers/Numbers.java):
 
 - `sum()`            - calculate sum of numbers[]                   (1Pt)
 
@@ -260,7 +258,7 @@ done.
 ```
 
 The invocation refers to an operation `sum()` from the
-[Numbers.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/Numbers.java)
+[Numbers.java](src/numbers/Numbers.java)
 interface that adds numbers provided as argument `int[] numbers`:
 
 ```java
@@ -280,7 +278,7 @@ public interface Numbers {
 ```
 
 There are several numbers arrays in the implementation class
-[NumbersImpl.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/NumbersImpl.java)
+[NumbersImpl.java](src/numbers/NumbersImpl.java)
 
 ```java
 package numbers;
@@ -339,9 +337,9 @@ All methods defined in the `Numbers` interface are:
 &nbsp;
 ## 5. Completing Numbers Methods
 
-[Numbers.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/Numbers.java)
+[Numbers.java](src/numbers/Numbers.java)
 interface methods are implemented in class
-[NumbersImpl.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/NumbersImpl.java):
+[NumbersImpl.java](src/numbers/NumbersImpl.java):
 
 ```java
 package numbers;
@@ -426,8 +424,8 @@ java -jar libs/junit-platform-console-standalone-1.9.2.jar $(eval echo $JUNIT_OP
 ```
 
 The JUnit Test class for the `sum` - method is
-[numbers.Numbers_1_sum_Tests.java](https://github.com/sgra64/se1.play/blob/b12/tests/numbers/Numbers_1_sum_Tests.java) in
-[tests/numbers](https://github.com/sgra64/se1.play/blob/b12/tests/numbers).
+[numbers.Numbers_1_sum_Tests.java](tests/numbers/Numbers_1_sum_Tests.java) in
+[tests/numbers](tests/numbers).
 
 Output of correct tests:
 
@@ -875,7 +873,7 @@ findAllSums('numb_2'), sum=999
 #### 9.9a *findAllSums()* - XL Solution Space 2^30
 
 Extend array `numb_2` in
-[NumbersImpl.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/NumbersImpl.java)
+[NumbersImpl.java](src/numbers/NumbersImpl.java)
 by two numbers: +`225` and +`463` (change comment).
 
 ```java
