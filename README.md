@@ -4,7 +4,35 @@
 
 # Assignment B2
 
-Follow steps for completing this assignment.
+Assignment B2 defines methods for calculations over arrays with numbers in
+interface
+[Numbers.java](https://github.com/sgra64/se1.play/blob/b12/src/numbers/Numbers.java),
+[Numbers.java](src/numbers/Numbers.java):
+
+- `sum()`            - calculate sum of numbers[]                   (1Pt)
+
+- `sum_pen()`        - sum of positive even numbers                 (1Pt)
+
+- `sum_rec()`        - sum of numbers[] without using loops         (1Pt)
+
+- `findFirst(int x)`     - find index of first occurrence of x      (1Pt)
+
+- `findLast(int x)`      - find index of last occurrence of x       (1Pt)
+
+- `findAll(int x)`       - find all indices of x in numbers         (1Pt)
+
+- `findSums(int sum)`    - find all pairs {a, b} with a + b = sum   (2Pt, +1EP)
+
+- `findAllSums(int sum)` - find all combinations of numbers that add to sum (3Pt, +2EP)
+
+Follow steps (1-9) below to complete the assignment. Implement a method and
+verify with passing the corresponding JUnit-test before proceeding with the
+next method.
+
+Points are credited when corresponding JUnit tests pass (tests:
+*Numbers_7b_find_sums_duplicates_Tests* and *Numbers_8b_find_all_sums_XL_Tests*
+are hard and yield extra points for passing: `7b` (+1EP) and `8b` (+2EP)).
+
 
 1. [Getting Started](#1-getting-started)
 
@@ -16,34 +44,21 @@ Follow steps for completing this assignment.
 
 5. [Completing Numbers Methods](#5-completing-numbers-methods)
 
-    (1.) `sum()`            - calculate sum of numbers[]                   (1Pt)
-
-    (2.) `sum_pen()`        - sum of positive even numbers                 (1Pt)
-
-    (3.) `sum_rec()`        - sum of numbers[] without using loops         (1Pt)
-
-    (4.) `findFirst(int x)`     - find index of first occurrence of x      (1Pt)
-
-    (5.) `findLast(int x)`      - find index of last occurrence of x       (1Pt)
-
-    (6.) `findAll(int x)`       - find all indices of x in numbers         (1Pt)
-
-    (7.) `findSums(int sum)`    - find all pairs {a, b} with a + b = sum   (2Pt)
-
-    (8.) `findAllSums(int sum)` - find all combinations of numbers that add to sum (3Pt)
-
-      Points are credited when corresponding JUnit tests pass.
-
-      For 7. and 8. tests `7a` and `8a` must pass. Extra points when tests
-      `7b` (+1EP) and `8b` (+2EP) pass.
-
 6. [Running JUnit Tests](#6-running-junit-tests)
 
 7. [Generating Javadoc](#7-generating-javadoc)
 
 8. [Packaging the Application](#8-packaging-the-application)
 
-9. [Solutions](#9-solutions)
+9. [Examples and Solutions](#9-examples-and-solutions)
+    - 9.1 [*sum()*](#91-sum)
+    - 9.2 [*sum_positive_even_numbers()*](#92-sum_positive_even_numbers)
+    - 9.3 [*sum_recursive()*](#93-sum_recursive)
+    - 9.4 [*findFirst()*](#94-findfirst)
+    - 9.5 [*findLast()*](#95-findlast)
+    - 9.6 [*findAll()*](#96-findall)
+    - 9.7 [*findSums()*](#97-findsums)
+    - 9.8 [*findAllSums()*](#98-findallsums)
 
 
 &nbsp;
@@ -221,11 +236,17 @@ bin/resources/logging.properties
 &nbsp;
 ## 4. Running the Application
 
-After building the application, it can be run using the `run` command
-and passing a number `n` to factorize.
+After building the application, the application can be called directly
+with `java` or through the build command `mk run` from the project
+environment.
+
+The `op` parameter names the function to call (`sum` for method *sum()*).
+Parameter `n` defines the numbers array in `NumbersImpl.java` used
+for the operation (yielding 0 as result if *sum()* is not yet implemented).
 
 ```sh
 mk run op=sum n=numbers
+java application.Application op=sum n=numbers
 ```
 
 Output:
@@ -345,10 +366,11 @@ public class NumbersImpl implements Numbers, Runnable {
     ...
 ```
 
-Implement the method and verify the result:
+Implement the method and verify the result (30):
 
 ```sh
 mk run op=sum n=numbers
+java application.Application op=sum n=numbers
 ```
 
 The correct result for array `'numbers': [-2, 4, 9, 4, -3, 4, 9, 5]` is `30`:
@@ -368,6 +390,12 @@ mk run op=sum n=numbers \
        op=sum n=numb_1 \
        op=sum n=numb_2 \
        op=sum n=numb_3
+
+java application.Application \
+    op=sum n=numbers \
+    op=sum n=numb_1 \
+    op=sum n=numb_2 \
+    op=sum n=numb_3
 ```
 
 Results:
@@ -428,7 +456,7 @@ Test run finished after 161 ms
 [         0 tests failed          ]
 ```
 
-Also run the JUnit tests for the `sum()` - method in your IDE.
+Also run the JUnit tests for the *sum()* - method in your IDE.
 
 
 &nbsp;
@@ -622,9 +650,18 @@ The packaged `application-1.0.0-SNAPSHOT.jar` can now be distributed.
 
 
 &nbsp;
-## 9. Solutions
+## 9. Examples and Solutions
 
-This section shows some sample solutions.
+This section shows some examples and solutions for *Numbers* - methods:
+
+- 9.1 [*sum()*](#91-sum)
+- 9.2 [*sum_positive_even_numbers()*](#92-sum_positive_even_numbers)
+- 9.3 [*sum_recursive()*](#93-sum_recursive)
+- 9.4 [*findFirst()*](#94-findfirst)
+- 9.5 [*findLast()*](#95-findlast)
+- 9.6 [*findAll()*](#96-findall)
+- 9.7 [*findSums()*](#97-findsums)
+- 9.8 [*findAllSums()*](#98-findallsums)
 
 
 #### 9.1 *sum()*
