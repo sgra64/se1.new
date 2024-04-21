@@ -2,9 +2,9 @@
         git clone -b b34 --single-branch https://github.com/sgra64/se1.play.git
  -->
 
-# Assignment B34
+# Assignment B4
 
-Assignment B34 demonstrates the use of the Java
+Assignment B4 demonstrates the use of the Java
 [Stream](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/Stream.html)
 API.
 
