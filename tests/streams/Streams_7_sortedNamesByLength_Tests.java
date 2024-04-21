@@ -60,7 +60,7 @@ public class Streams_7_sortedNamesByLength_Tests {
     void test790_sortedNamesByLength_irregular_names_Null() {
         //
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-        	testedObj.sortedNamesByLength(null);    // throw exception if names arg is null
+            testedObj.sortedNamesByLength(null);    // throw exception if names arg is null
         });
         assertEquals("names argument is null.", thrown.getMessage());
     }

@@ -42,7 +42,7 @@ public class Streams_5_filteredNames_Tests {
     void test590_filteredNames_irregularNamesNull() {
         //
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-        	testedObj.filteredNames(null, ".*ez$");    // throw exception if names arg is null
+            testedObj.filteredNames(null, ".*ez$");    // throw exception if names arg is null
         });
         assertEquals("names or regex argument is null.", thrown.getMessage());
     }
@@ -52,7 +52,7 @@ public class Streams_5_filteredNames_Tests {
     void test591_filteredNames_irregularRegexNull() {
         //
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-        	testedObj.filteredNames(Streams.names, null);    // throw exception if regex arg is null
+            testedObj.filteredNames(Streams.names, null);    // throw exception if regex arg is null
         });
         assertEquals("names or regex argument is null.", thrown.getMessage());
     }
@@ -62,7 +62,7 @@ public class Streams_5_filteredNames_Tests {
     void test592_filteredNames_irregularNamesAndRegexNull() {
         //
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-        	testedObj.filteredNames(null, null);    // throw exception if both args are null
+            testedObj.filteredNames(null, null);    // throw exception if both args are null
         });
         assertEquals("names or regex argument is null.", thrown.getMessage());
     }

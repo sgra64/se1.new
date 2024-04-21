@@ -13,17 +13,17 @@ import application.Application;
  */
 public interface Streams {
 
-	/**
-	 * Aufgabe 1: Return 10 random integer numbers generated from a Stream<Integer>.
-	 * @return 10 random numbers
-	 */
+    /**
+     * Aufgabe 1: Return 10 random integer numbers generated from a Stream<Integer>.
+     * @return 10 random numbers
+     */
     List<Integer> tenRandomNumbers();
 
 
-	/**
-	 * Aufgabe 2: Return 10 even random integer numbers generated from a Stream<Integer>.
-	 * @return 10 even random numbers
-	 */
+    /**
+     * Aufgabe 2: Return 10 even random integer numbers generated from a Stream<Integer>.
+     * @return 10 even random numbers
+     */
     List<Integer> tenEvenRandomNumbers();
 
 
@@ -111,7 +111,7 @@ public interface Streams {
             this.unitPrice = unitPrice;
         }
         public String toString() {
-        	return String.format("\t- %-7s %dx %4d = %6d", article + ",", units, unitPrice, units * unitPrice);
+            return String.format("\t- %-7s %dx %4d = %6d", article + ",", units, unitPrice, units * unitPrice);
         }
     }
 

@@ -76,7 +76,7 @@ public class Streams_9_sortByOrderValue_Tests {
     void test990_sortByOrderValue_irregular_orders_Null() {
         //
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-        	testedObj.calculateValue(null);    // throw exception if orders arg is null
+            testedObj.calculateValue(null);    // throw exception if orders arg is null
         });
         assertEquals("orders argument is null.", thrown.getMessage());
     }
