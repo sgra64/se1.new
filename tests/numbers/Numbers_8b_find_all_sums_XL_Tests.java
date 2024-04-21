@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Numbers_8b_find_all_sums_XL_Tests {
 
     /*
-     * test object is an instance of the Numbers class
+     * tested object is an instance of the Numbers class
      */
-    private static Numbers testObj;
+    private static Numbers testedObj;
 
 
     /**
@@ -27,7 +27,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
      */
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
-        testObj = Numbers.createNumbersInstance();
+        testedObj = Numbers.createNumbersInstance();
     }
 
     // numb_2[]
@@ -64,7 +64,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(824)
     void test824_find_all_sums_XL_24_numbers() {
-        var actual = testObj.findAllSums(NumbersImpl.numb_2, 999);
+        var actual = testedObj.findAllSums(NumbersImpl.numb_2, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -88,7 +88,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(825)
     void test825_find_all_sums_XL_25_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225, 999);
+        var actual = testedObj.findAllSums(nbr_2_225, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -116,7 +116,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(826)
     void test826_find_all_sums_XL_26_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225_463, 999);
+        var actual = testedObj.findAllSums(nbr_2_225_463, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -145,7 +145,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(827)
     void test827_find_all_sums_XL_27_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225_463_286, 999);
+        var actual = testedObj.findAllSums(nbr_2_225_463_286, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -176,7 +176,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(828)
     void test828_find_all_sums_XL_28_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225_463_286_569, 999);
+        var actual = testedObj.findAllSums(nbr_2_225_463_286_569, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -209,7 +209,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(829)
     void test829_find_all_sums_XL_29_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225_463_286_569_384, 999);
+        var actual = testedObj.findAllSums(nbr_2_225_463_286_569_384, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},
@@ -245,7 +245,7 @@ public class Numbers_8b_find_all_sums_XL_Tests {
     @Test
     @Order(830)
     void test830_find_all_sums_XL_30_numbers() {
-        var actual = testObj.findAllSums(nbr_2_225_463_286_569_384_9, 999);
+        var actual = testedObj.findAllSums(nbr_2_225_463_286_569_384_9, 999);
         //System.out.println(Matchers.toString(actual));
         int[][] expected = {
             {27, 972},

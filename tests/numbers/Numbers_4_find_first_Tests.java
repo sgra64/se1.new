@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Numbers_4_find_first_Tests {
 
     /*
-     * test object is an instance of the Numbers class
+     * tested object is an instance of the Numbers class
      */
     private static Numbers testObj;
 

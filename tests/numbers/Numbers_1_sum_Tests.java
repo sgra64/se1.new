@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Numbers_1_sum_Tests {
 
     /*
-     * test object is an instance of the Numbers class
+     * tested object is an instance of the Numbers class
      */
-    private static Numbers testObj;
+    private static Numbers testedObj;
 
 
     /**
@@ -25,30 +25,30 @@ public class Numbers_1_sum_Tests {
      */
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
-        testObj = Numbers.createNumbersInstance();
+        testedObj = Numbers.createNumbersInstance();
     }
 
     @Test
     @Order(100)
     void test100_sum_regular() {
-        assertEquals(30, testObj.sum(NumbersImpl.numbers));
+        assertEquals(30, testedObj.sum(NumbersImpl.numbers));
     }
 
     @Test
     @Order(101)
     void test101_sum_regular() {
-        assertEquals(50, testObj.sum(NumbersImpl.numb_1));
+        assertEquals(50, testedObj.sum(NumbersImpl.numb_1));
     }
 
     @Test
     @Order(102)
     void test102_sum_regular() {
-        assertEquals(10984, testObj.sum(NumbersImpl.numb_2));
+        assertEquals(10984, testedObj.sum(NumbersImpl.numb_2));
     }
 
     @Test
     @Order(103)
     void test103_sum_regular() {
-        assertEquals(141466, testObj.sum(NumbersImpl.numb_3));
+        assertEquals(141466, testedObj.sum(NumbersImpl.numb_3));
     }
 }

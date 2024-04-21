@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Numbers_8a_find_all_sums_Tests {
 
     /*
-     * test object is an instance of the Numbers class
+     * tested object is an instance of the Numbers class
      */
-    private static Numbers testObj;
+    private static Numbers testedObj;
 
 
     /**
@@ -25,13 +25,13 @@ public class Numbers_8a_find_all_sums_Tests {
      */
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
-        testObj = Numbers.createNumbersInstance();
+        testedObj = Numbers.createNumbersInstance();
     }
 
     @Test
     @Order(800)
     void test800_find_all_sums_regular() {
-        var actual = testObj.findAllSums(NumbersImpl.numb_1, 10);
+        var actual = testedObj.findAllSums(NumbersImpl.numb_1, 10);
         int[][] expected = {
             {10},
             {8, 2}
@@ -42,7 +42,7 @@ public class Numbers_8a_find_all_sums_Tests {
     @Test
     @Order(821)
     void test821_find_all_sums_regular_nbrs_2_sum999() {
-        var actual = testObj.findAllSums(NumbersImpl.numb_2, 999);
+        var actual = testedObj.findAllSums(NumbersImpl.numb_2, 999);
         int[][] expected = {
             {27, 972},
             {226, 773},
