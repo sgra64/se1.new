@@ -4,9 +4,8 @@
 
 # Assignment B4
 
-Assignment B4 demonstrates the use of the Java
-[Stream](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/Stream.html)
-API.
+Assignment B4 demonstrates the use of the
+[Java Stream API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/Stream.html).
 
 Interface [Streams.java](src/streams/Streams.java) defines a number of methods
 that will be implemented using the Java Stream API:
@@ -32,13 +31,11 @@ that will be implemented using the Java Stream API:
 - alle JUnit Tests passieren.                                       (1pt)
 
 
-Follow steps (1-9) below to complete the assignment. Implement a method and
+Follow steps (1-8) below to complete the assignment. Implement a method and
 verify with passing the corresponding JUnit-test before proceeding with the
 next method.
 
-Points are credited when corresponding JUnit tests pass (tests:
-*Numbers_7b_find_sums_duplicates_Tests* and *Numbers_8b_find_all_sums_XL_Tests*
-are hard and yield extra points for passing: `7b` (+1EP) and `8b` (+2EP)).
+Points are credited when corresponding JUnit tests pass.
 
 
 1. [Getting Started](#1-getting-started)
