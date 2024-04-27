@@ -58,13 +58,21 @@ function setup() {
         echo "need to get all ${P[env]} files from repository: ${P[url]}" \
         return
 
+    # if 'libs' directory is not in project, attempt to wire it from an
+    # alternative path, e.g. where the 'libs'-branch might be checked out
+    for alt in "branches/libs/libs" "branches/libs" "../libs/libs" "../libs"; do
+        [ ! -d ${P[lib]} ] && local libs_linked=$(wire_links $alt ${P[lib]})
+    done
+    # always adjust P[lib] for symlink (javac does not understand links)
+    [ -L libs ] && P[lib]=$(readlink libs)
+
     # define local variables and fill with values
     local module_dirs=( $(find ${P[lib]}/* -type d 2>/dev/null) )
     local module_jars=( $(find ${P[lib]}/*/ -name '*.jar' 2>/dev/null) )
     local entries=(
-        "${P[target]}/classes"
-        "${P[target]}/test-classes"
-        "${P[target]}/resources"
+        ${P[target]}/classes
+        ${P[target]}/test-classes
+        ${P[target]}/resources
         ${module_jars[@]}
     )
 
@@ -128,7 +136,10 @@ function setup() {
             echo "    - $var"
         done
 
-    created=()    # collect created files
+    # created=("$libs_linked")    # collect created files
+    created=()
+    [ "$libs_linked" ] && created+=("$libs_linked")
+    # 
     # create .env/.classpath file for VSCode code-runner (settings.json)
     [ ! -f .env/.classpath ] \
         && echo "-cp $CLASSPATH" > .env/.classpath \
@@ -188,7 +199,7 @@ function cmd() {
                 "    -C ${P[target]}/classes . ; \\"
                 "jar uvf ${P[final_jar]} -C ${P[target]} resources;")
                 ;;
-    pack-libs) cmd=("[[ ! -d ${P[target]}/unpacked ]] && mkdir -p ${P[target]}/unpacked && \\"
+    pack-libs)  cmd=("[[ ! -d ${P[target]}/unpacked ]] && mkdir -p ${P[target]}/unpacked && \\"
                 "  echo inflating libs to ${P[target]}/unpacked && \\"
                 "  (cd ${P[target]}/unpacked; find ../../libs/*/ -type f | xargs -I % jar xf %); \\"
                 "jar uvf ${P[final_jar]} -C ${P[target]}/unpacked org")
@@ -196,13 +207,14 @@ function cmd() {
     run)        cmd=("java application.Application") ;;
     run-jar)    cmd=("java -jar ${P[final_jar]}") ;;
     run-tests)  cmd=("java -jar ${P[lib]}/junit-platform-console-standalone-1.9.2.jar \\"
-                "  \$(eval echo \$JUNIT_OPTIONS)" "--scan-class-path")
+                "  \$(eval echo \$JUNIT_OPTIONS)"
+                # "-c application.Application_0_always_pass_Tests \\"
+                "--scan-class-path")
                 ;;
     javadoc)    # append package names containing .java files after $JDK_JAVADOC_OPTIONS
                 cmd=("javadoc -d ${P[doc]} \$(eval echo \$JDK_JAVADOC_OPTIONS) \\"
                 "  \$(cd ${P[src]}; find . -type f | xargs dirname | uniq | cut -c 3-)")
                 ;;
-
     clean)  cmd=("rm -rf ${P[target]} ${P[log]} ${P[doc]}")
             ;;
     wipe)   # reset project settings and clear the project directory of generated files
@@ -212,11 +224,12 @@ function cmd() {
                  "unset P cmd_shorts CLASSPATH MODULEPATH JDK_JAVAC_OPTIONS; \\"
                  "unset JDK_JAVADOC_OPTIONS JUNIT_OPTIONS aliases_present; \\"
                  "unset -f cmd show make copy; \\"
-                 "unalias mk build wipe clean"
+                 "unalias mk build wipe clean; \\"
+                 "[ -L libs ] && rm libs"
             ) ;;
     esac
     case "$2" in
-    --single-line)  # output in copy&paste form with trailng '\'
+    --single-line)
             shift; shift; [[ "${cmd[@]}" ]] && echo -en "${cmd[@]} $@" | sed -e 's/\\ /\\\n/g' ;;
     *)      shift; echo -en "${cmd[@]} $@" | sed -e 's/\\ /\n/g' ;;
     esac
@@ -307,6 +320,22 @@ function make() {
 }
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+# Attempt to link ("wire") a directory in the project directory (e.g. libs)
+# from an alternative path.
+# GitBash understands links, but does not create links (copies files instead).
+# Usage:
+#   wire_links [alt_path] [link_name]
+# @param alt_path link destination path
+# @param link_name name of link
+function wire_links() {
+    local alt_path="$1"
+    local link_name="$2"
+    [ ! -d $link_name -a ! -L $link_name -a -d $alt_path ] && \
+        ln -s $alt_path $link_name && \
+            [ -L $link_name ] && echo " ln -s $(readlink $link_name) $link_name"
+}
+
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 # Copy content of (resource) directory passed as first argument to directory
 # passed as second argumet, except 'META-INF' directory.
 # Usage:
@@ -314,14 +343,14 @@ function make() {
 # @param from_dir source directory from which content is recursively copied
 # @param to_dir destination directory
 function copy() {
-    local from="$1"
-    local to="$2"
-    if [ -z "$from" ] || [ -z "$to" ]; then
+    local from_dir="$1"
+    local to_dir="$2"
+    if [ -z "$from_dir" ] || [ -z "$to_dir" ]; then
         echo "use: copy <from-dir> <to-dir>"
     else
-        [[ ! -d "$to" ]] && mkdir -p $to
-        # find $from ! -path '*META-INF*' -type f | xargs cp --parent -t $to
-        tar -cpf - -C $from --exclude='META-INF' . | tar xpf - -C $to
+        [[ ! -d "$to_dir" ]] && mkdir -p $to_dir
+        # find $from_dir ! -path '*META-INF*' -type f | xargs cp --parent -t $to_dir
+        tar -cpf - -C $from_dir --exclude='META-INF' . | tar xpf - -C $to_dir
     fi
 }
 
@@ -357,4 +386,4 @@ function eclipse_classpath() {
 setup
 
 # remove transient varibales and functions from process
-unset -f setup eclipse_classpath
+unset -f setup wire_links eclipse_classpath

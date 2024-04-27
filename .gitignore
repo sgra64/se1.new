@@ -5,9 +5,6 @@
 # example: https://github.com/github/gitignore/blob/master/Java.gitignore
 #------------------------------------------------------------------------------
 
-# ignore .gitignore for this project
-.gitignore
-
 # ignore generated directories and compiled output
 bin/
 out/
@@ -29,12 +26,16 @@ target/
 *.zip
 
 # ignore folders with libraries
-lib/
-libs/
+/lib
+/libs
+
+# ignore folders with branches
+/branch
+/branches
 
 # ignore unpublished java doc
-doc/
-docs/
+/doc
+/docs
 
 # ignore log directories and *.log files
 **/logs     # matches: logs/debug.log, build/logs/debug.log
@@ -73,4 +74,3 @@ xcuserdata/
 
 # ignore OSX system files
 .DS_Store
-
