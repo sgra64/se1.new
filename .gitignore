@@ -29,6 +29,10 @@ target/
 lib/
 libs/
 
+# ignore folders with branches
+branch/
+branches/
+
 # ignore unpublished java doc
 doc/
 docs/
