@@ -29,6 +29,10 @@ target/
 lib/
 libs/
 
+# ignore folders with branches
+branch/
+branches/
+
 # ignore unpublished java doc
 doc/
 docs/
@@ -59,11 +63,10 @@ docs/
 project.xcworkspace/
 xcuserdata/
 
-# ignore tmp directories and *.tmp files, sub-branches
+# ignore tmp directories and *.tmp files
 **/tmp
 **/temp
 *.tmp
-**/branches
 
 # ignore images and markup directories
 **/img
@@ -71,4 +74,3 @@ xcuserdata/
 
 # ignore OSX system files
 .DS_Store
-
