@@ -48,8 +48,16 @@ public class Application implements Runnable {
      */
     public static void main(String[] args) {
         Runnable runnable = create(new String[] {
-            "streams.StreamsImpl_2", "streams.StreamsImpl",
-            "numbers.NumbersImpl_2", "numbers.NumbersImpl"
+        //
+		"examples.Optionals",
+//		"examples.Lists",
+//		"examples.Sets",
+//		"examples.Iterables",
+//		"examples.Maps",
+//		"examples.Functions",
+//		"examples.Streams",
+//		"examples.Records",
+        //
         }, cls -> Runnable.class.isAssignableFrom(cls), args, () -> new Application(args));
         runnable.run();
     }
