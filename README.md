@@ -2,8 +2,26 @@
         git clone -b b12 --single-branch https://github.com/sgra64/se1.play.git
  -->
 
-# Assignment B1
+Java Beispiele:
 
+- [src/examples/Optionals.java](src/examples/Optionals.java)
+
+- [src/examples/Lists.java](src/examples/Lists.java)
+
+- [src/examples/Sets.java](src/examples/Sets.java)
+
+- [src/examples/Iterables.java]()
+
+- [src/examples/Maps.java](src/examples/Maps.java)
+
+- [src/examples/Functions.java](src/examples/Functions.java)
+
+- [src/examples/Streams.java](src/examples/Streams.java)
+
+- [src/examples/Records.java](src/examples/Records.java)
+
+
+<!-- 
 Follow steps for completing this assignment.
 
  1. [Getting Started](#1-getting-started)                       
@@ -531,4 +549,4 @@ Find answers to these quesitons:
             CLASSPATH+=$entry
         done
     fi
-    ```
+    ``` -->
